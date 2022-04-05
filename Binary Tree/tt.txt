@@ -1,0 +1,198 @@
+background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#define MAX 1000
+
+int main() {
+    int isprime(int);
+    int T, N[MAX], i,sum=0;
+    scanf("%d", &T);
+    for(i=0;i<T;i++){
+        scanf("%d",&N[i]);
+    }
+    for(int i=0;i<T;i++){
+        for(int j=2;j<N[i];j++){
+            if(isprime(j)==1)
+            {
+                sum=+j;
+            }
+        }
+       printf("%d\n",sum);
+    }
+    return 0;
+}
+int isprime(int n){
+    for(int i=2;i<=n/2;i++)
+    {
+        if(n%i==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+
+rows = int(input("Enter the number of rows: "))  
+   
+k = 2 * rows - 2  
+ 
+for i in range(0, rows):   
+    for j in range(0, k):  
+        print(end=" ")  
+    
+    k = k - 1  
+    for j in range(0, i + 1):  
+        print("* ", end="")  
+    print("")  
+  
+k = rows - 2  
+
+for i in range(rows, -1, -1):  
+      
+    for j in range(k, 0, -1):  
+        print(end=" ")  
+    
+    k = k + 1  
+    
+    for j in range(0, i + 1):  
+        print("* ", end="")  
+    print("")  
+
+
+
+
+fluency - 4 - 3.5
+grammer - 4.5 - 4
+content - 3.5 - 3.5
+time limit - 5 - 4.5
+---------------
+17/20 - 15.5/20
+---------------
+
+
+
+int arr[n*n];
+        int c=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                arr[c]=(mat[i][j]);
+                c++;
+            }
+        }
+        int a=sizeof(arr)/sizeof(arr[0]);
+        sort(arr,arr+a);
+       
+        return arr[k-1];
+
+
+
+
+for maximum 1s in a row
+
+int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    // code here
+	    int count1=0,index;
+	    unordered_map<int,int> mp;
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<m;j++){
+	            if(arr[i][j]==1){
+	                mp[1]++;
+	            }
+	        }
+	        count1=max(count1,mp[1]);
+	        if(count1<mp[1]){
+	            count1=
+	            index=i;
+	        }
+	        mp[1]=0;
+	    }
+	    return index;
+	}
+
+
+
+
+
+day1 
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int r,c,col0=1;
+        r=matrix.size();   //number of rows
+        c=matrix[0].size();   // number of columns
+        
+        for(int i=0;i<r;i++){
+            if(matrix[i][0]==0){
+                col0=0;
+            }
+            for(int j=1;j<c;j++){
+                if(matrix[i][j]==0){
+                    matrix[i][0]=matrix[0][j]=0;  // set first element of row and column as 0
+                }
+            }
+        }
+        for(int i=r-1;i>=0;i--){
+            for(int j=c-1;j>=1;j--){
+                if(matrix[i][0]==0 || matrix[0][j]==0){
+                    matrix[i][j]=0;
+                }
+            }
+            if(col0==0){
+                matrix[i][0]=0;
+            }
+        }
+    }
+};
+
+
+majority element n/2
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n=nums.size();
+        int i;
+        unordered_map<int,int>m;
+        for(i=0;i<n;i++){
+            m[nums[i]]++;
+            if(m[nums[i]]>n/2){
+                break;
+            }
+        }
+        return nums[i];
+    }
+};
+
+
+
+
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* curr=head;
+        ListNode* prev=NULL;
+        ListNode* next=NULL;
+        
+        while(curr!=NULL){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+};
+
+
+Problem
+Solution
+Comments and Feedbacks
+Tech used
