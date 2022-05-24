@@ -83,10 +83,10 @@ void heapify(int arr[], int n, int i){
     int left=2*i;
     int right=2*i +1;
 
-    if(left < n && arr[largest] < arr[left]){
+    if(left <= n && arr[largest] < arr[left]){
         largest=left;
     }
-    if(right < n && arr[largest] < arr[right]){
+    if(right <= n && arr[largest] < arr[right]){
         largest=right;
     }
 
@@ -113,7 +113,7 @@ int main() {
         heapify(arr,n,i);
     }
     cout<<"print the array "<<endl;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         cout<<arr[i]<<" ";
     }
