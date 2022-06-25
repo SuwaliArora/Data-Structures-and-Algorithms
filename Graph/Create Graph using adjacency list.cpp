@@ -50,7 +50,5 @@ int main()
         
     }
     g.print();
-    cout<<"Hello World";
-
     return 0;
 }
