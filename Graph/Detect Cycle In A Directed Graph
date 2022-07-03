@@ -1,0 +1,46 @@
+#include<unordered_map>
+#include<queue>
+#include<list>
+
+bool checkcycle(int node, unordered_map<int, bool> &visited, unordered_map<int, bool> dfsvisited,unordered_map<int,list<int>> &adjlist ) {
+       visited[node]=true;
+       dfsvisited[node]=true;
+       for(auto neighbour: adjlist[node]){
+            
+           if(!visited[neighbour]){
+                bool cycle=checkcycle(neighbour,visited,dfsvisited,adjlist);
+                if(cycle) return true;
+            }
+            else if(dfsvisited[neighbour]==true){
+                // cycle present
+                return true;
+            }
+        }
+    dfsvisited[node]=false;
+    return false;
+}
+int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
+ // create adjacency list
+    unordered_map<int,list<int>> adjlist;
+    for(int i=0;i<edges.size();i++){
+        int u=edges[i].first;
+        int v=edges[i].second;
+        
+        adjlist[u].push_back(v);
+       
+    // to store if node is already visited or not
+    unordered_map<int, bool> visited; 
+    // to store if dfs call for node is called or not
+    unordered_map<int, bool> dfsvisited; 
+    
+     // call dfs for all components 
+    for(int i=1;i<=n;i++){
+        if(!visited[i]){
+            bool cyclefound=checkcycle(i,visited,dfsvisited,adjlist);
+            if(cyclefound) return true;
+        }
+    } 
+   
+    }
+  return false;   
+}
