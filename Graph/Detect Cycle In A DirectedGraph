@@ -1,0 +1,50 @@
+// using Kahn's algorithm
+#include<unordered_map>
+#include<queue>
+#include<list>
+
+int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
+  // create adjacency list
+    unordered_map<int,list<int>> adjlist;
+    for(int i=0;i<edges.size();i++){
+        int u=edges[i].first-1; // nodes are from 1
+        int v=edges[i].second-1; 
+        adjlist[u].push_back(v);
+    }
+     // find all indegrees
+    vector<int> indegree(n);
+    for(auto i:adjlist){
+        for(auto j: i.second){
+            indegree[j]++;
+        }
+    }
+      // add elements with 0 indegree in tha queue
+    queue<int> q;
+    for(int i=0;i<n;i++){
+        if(indegree[i]==0)
+            q.push(i);
+    }
+    
+    // do bfs
+    int count=0;
+    while(!q.empty()){
+        int front=q.front();
+        q.pop();
+
+        // increase count
+        count++;
+
+        // neighbour indegree update
+        for(auto neighbour: adjlist[front]){
+            indegree[neighbour]--;
+            if(indegree[neighbour]==0)
+                q.push(neighbour);
+
+        }
+    }
+    // if valid topological sort, no cycle present
+    if(count==n) 
+        return false;
+    else
+        return true; // if invalid topological sort, no cycle present
+}
