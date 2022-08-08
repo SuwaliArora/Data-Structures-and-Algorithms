@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int> mp;
+        for(auto it: arr){
+            mp[it]++;
+        }
+        unordered_map<int,int> mp2;
+        for(auto it:mp){
+           // it means the number of occurance is already present in the map
+            if(mp2[it.second]>=1){
+                return false;
+            }
+          
+            else{
+                mp2[it.second]++;
+            }
+        }
+        return true;
+    }
+};
+
+// time complexity= O(n)+O(n)
+// space complexity= O(n)+O(n)
+
+
