@@ -7,8 +7,10 @@ public:
         }
         int n=nums.size();
         for(int i=0;i<n;i++){
+            
             if(!freq[i]) {
-                ds.push_back(nums[i]);
+                ds.push_back(nums[i]); 
+                // mark the element as picked
                 freq[i]=1;
                 solve(nums,ans,ds,freq);
                 freq[i]=0;
@@ -24,3 +26,6 @@ public:
         return ans;
     }
 };
+
+// T.C- O(n! * n)
+// S.C- O(n)
